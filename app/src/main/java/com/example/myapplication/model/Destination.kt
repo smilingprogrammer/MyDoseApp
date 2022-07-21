@@ -14,17 +14,17 @@ data class Destination(
     val iconId: Int
 )
 
-val DESTINATIONS = listOf(
-    Destination(
-        route = ,
-        selectedIcon = Icons.Filled.Home,
-        unselectedIcon = Icons.Outlined.Home,
-        iconId = R.string.home
-    ),
-    Destination(
-        route = ,
-        selectedIcon = Icons.Filled.DateRange,
-        unselectedIcon = Icons.Filled.DateRange,
-        iconId = R.string.calendar
-    )
-)
+//val DESTINATIONS = listOf(
+//    Destination(
+//        route = ,
+//        selectedIcon = Icons.Filled.Home,
+//        unselectedIcon = Icons.Outlined.Home,
+//        iconId = R.string.home
+//    ),
+//    Destination(
+//        route = ,
+//        selectedIcon = Icons.Filled.DateRange,
+//        unselectedIcon = Icons.Filled.DateRange,
+//        iconId = R.string.calendar
+//    )
+//)

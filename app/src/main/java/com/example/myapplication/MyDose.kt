@@ -24,74 +24,74 @@ import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
 fun MyDose() {
-    MyApplicationTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-
-            val navController = rememberNavController()
-            val doseTopLevelNavigation = remember(navController) {
-                DoseTopLevelNavigation(navController)
-            }
-
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentDestination = navBackStackEntry?.destination
-
-            val bottomBarVisibility = rememberSaveable { (mutableStateOf(true)) }
-            val fabVisibility = rememberSaveable { (mutableStateOf(true)) }
-
-            Scaffold(
-                modifier = Modifier.padding(24.dp),
-                containerColor = Color.Transparent,
-                contentColor = MaterialTheme.colorScheme.onBackground,
-                floatingActionButton = {
-                    AnimatedVisibility(
-                        visible = fabVisibility.value,
-                        enter = slideInVertically(initialOffsetY = { it }),
-                        exit = slideOutVertically(targetOffsetY = { it }),
-                        content = {
-                            DoseFAB(navController)
-                        })
-
-                },
-                bottomBar = {
-                    AnimatedVisibility(
-                        visible = bottomBarVisibility.value,
-                        enter = slideInVertically(initialOffsetY = { it }),
-                        exit = slideOutVertically(targetOffsetY = { it }),
-                        content = {
-                            DoseBottomBar(
-                                onNavigateToTopLevelDestination = doseTopLevelNavigation::navigateTo,
-                                currentDestination = currentDestination
-                            )
-                        })
-                }
-            ) { padding ->
-                Row(
-                    Modifier
-                        .fillMaxSize()
-                        .windowInsetsPadding(
-                            WindowInsets.safeDrawing.only(
-                                WindowInsetsSides.Horizontal
-                            )
-                        )
-                ) {
-
-                    DoseNavHost(
-                        bottomBarVisibility = bottomBarVisibility,
-                        fabVisibility = fabVisibility,
-                        navController = navController,
-                        modifier = Modifier
-                            .padding(padding)
-                            .consumedWindowInsets(padding)
-                    )
-                }
-            }
-
-        }
-    }
+//    MyApplicationTheme {
+//        // A surface container using the 'background' color from the theme
+//        Surface(
+//            modifier = Modifier.fillMaxSize(),
+//            color = MaterialTheme.colorScheme.background
+//        ) {
+//
+//            val navController = rememberNavController()
+//            val doseTopLevelNavigation = remember(navController) {
+//                DoseTopLevelNavigation(navController)
+//            }
+//
+//            val navBackStackEntry by navController.currentBackStackEntryAsState()
+//            val currentDestination = navBackStackEntry?.destination
+//
+//            val bottomBarVisibility = rememberSaveable { (mutableStateOf(true)) }
+//            val fabVisibility = rememberSaveable { (mutableStateOf(true)) }
+//
+//            Scaffold(
+//                modifier = Modifier.padding(24.dp),
+//                containerColor = Color.Transparent,
+//                contentColor = MaterialTheme.colorScheme.onBackground,
+//                floatingActionButton = {
+//                    AnimatedVisibility(
+//                        visible = fabVisibility.value,
+//                        enter = slideInVertically(initialOffsetY = { it }),
+//                        exit = slideOutVertically(targetOffsetY = { it }),
+//                        content = {
+//                            DoseFAB(navController)
+//                        })
+//
+//                },
+//                bottomBar = {
+//                    AnimatedVisibility(
+//                        visible = bottomBarVisibility.value,
+//                        enter = slideInVertically(initialOffsetY = { it }),
+//                        exit = slideOutVertically(targetOffsetY = { it }),
+//                        content = {
+//                            DoseBottomBar(
+//                                onNavigateToTopLevelDestination = doseTopLevelNavigation::navigateTo,
+//                                currentDestination = currentDestination
+//                            )
+//                        })
+//                }
+//            ) { padding ->
+//                Row(
+//                    Modifier
+//                        .fillMaxSize()
+//                        .windowInsetsPadding(
+//                            WindowInsets.safeDrawing.only(
+//                                WindowInsetsSides.Horizontal
+//                            )
+//                        )
+//                ) {
+//
+//                    DoseNavHost(
+//                        bottomBarVisibility = bottomBarVisibility,
+//                        fabVisibility = fabVisibility,
+//                        navController = navController,
+//                        modifier = Modifier
+//                            .padding(padding)
+//                            .consumedWindowInsets(padding)
+//                    )
+//                }
+//            }
+//
+//        }
+//    }
 }
 
 @Preview
