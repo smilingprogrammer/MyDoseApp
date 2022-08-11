@@ -23,7 +23,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.navigation.AddMedicationDestination
+import com.example.myapplication.navigation.destinations.AddMedicationDestination
 import com.example.myapplication.navigation.MyDoseNavigation
 import com.example.myapplication.ui.theme.MyApplicationTheme
 

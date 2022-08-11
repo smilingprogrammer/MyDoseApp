@@ -1,4 +1,4 @@
-package com.example.myapplication.navigation
+package com.example.myapplication.navigation.destinations
 
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
