@@ -25,6 +25,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.navigation.destinations.AddMedicationDestination
 import com.example.myapplication.navigation.MyDoseNavigation
+import com.example.myapplication.navigation.NavHost
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -85,8 +86,7 @@ fun MyDose() {
                             )
                         )
                 ) {
-
-                    DoseNavHost(
+                    NavHost(
                         bottomBarVisibility = bottomBarVisibility,
                         fabVisibility = fabVisibility,
                         navController = navController,

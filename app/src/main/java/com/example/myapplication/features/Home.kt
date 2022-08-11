@@ -1,15 +1,15 @@
 package com.example.myapplication.features
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import com.example.myapplication.R
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
+import androidx.compose.material3.*
 import androidx.compose.material3.CardDefaults.cardColors
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import com.example.myapplication.model.Medication
 import com.example.myapplication.util.DailyTimes
 import com.example.myapplication.util.TimeGroup
-import com.example.myapplication.util.getRecurrenceList
 import java.util.*
 
 @Composable
