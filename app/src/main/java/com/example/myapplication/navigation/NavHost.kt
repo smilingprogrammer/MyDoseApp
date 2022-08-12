@@ -1,13 +1,13 @@
 package com.example.myapplication.navigation
 
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.navigation.destinations.HomeDestination
-import com.example.myapplication.navigation.destinations.MEDICATION
-import com.example.myapplication.navigation.destinations.MedicationConfirmDestination
+import com.example.myapplication.navigation.destinations.*
 import com.google.gson.Gson
 
 @Composable
