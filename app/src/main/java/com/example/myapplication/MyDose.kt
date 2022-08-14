@@ -23,13 +23,14 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.model.DESTINATIONS
+import com.example.myapplication.model.Destination
 import com.example.myapplication.navigation.destinations.AddMedicationDestination
 import com.example.myapplication.navigation.MyDoseNavigation
 import com.example.myapplication.navigation.NavHost
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
-@OptIn(ExperimentalLayoutApi::class)
-@SuppressLint("RememberReturnType")
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MyDose() {
     MyApplicationTheme {
@@ -103,7 +104,7 @@ fun MyDose() {
 
 @Composable
 private fun DoseBottomBar(
-    onNavigateToTopLevelDestination: (TopLevelDestination) -> Unit,
+    onNavigateToTopLevelDestination: (Destination) -> Unit,
     currentDestination: NavDestination?
 ) {
     // Wrap the navigation bar in a surface so the color behind the system
@@ -118,7 +119,7 @@ private fun DoseBottomBar(
             tonalElevation = 0.dp
         ) {
 
-            TOP_LEVEL_DESTINATIONS.forEach { destination ->
+            DESTINATIONS.forEach { destination ->
                 val selected =
                     currentDestination?.hierarchy?.any { it.route == destination.route } == true
                 NavigationBarItem(
@@ -134,7 +135,7 @@ private fun DoseBottomBar(
                             contentDescription = null
                         )
                     },
-                    label = { Text(stringResource(destination.iconTextId)) }
+                    label = { Text(stringResource(destination.iconId)) }
                 )
             }
         }
