@@ -1,5 +1,42 @@
 package com.example.myapplication.features
 
+import android.app.DatePickerDialog
+import android.content.Context
+import android.widget.DatePicker
+import android.widget.Toast
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import com.example.myapplication.R
+import com.example.myapplication.features.Calendar
+import com.example.myapplication.model.Medication
+import com.example.myapplication.util.DailyTimes
+import com.example.myapplication.util.TimeGroup
+import com.example.myapplication.util.getRecurrenceList
+import com.example.myapplication.util.toFormattedString
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import java.text.DateFormatSymbols
+import java.util.*
+
 @Composable
 fun AddMedication(
     onBackClicked: () -> Unit,
@@ -15,7 +52,7 @@ fun AddMedication(
 fun AddMedicationScreen(onBackClicked: () -> Unit, navigateToMedicationConfirm: (Medication) -> Unit) {
     var medicationName by rememberSaveable { mutableStateOf("") }
     var numberOfDosage by rememberSaveable { mutableStateOf("1") }
-    var recurrence by rememberSaveable { mutableStateOf(Recurrence.Daily.name) }
+    var recurrence by rememberSaveable { mutableStateOf(TimeGroup.Daily.name) }
     var endDate by rememberSaveable { mutableStateOf(Date().time) }
     var isMorningSelected by rememberSaveable { mutableStateOf(false) }
     var isAfternoonSelected by rememberSaveable { mutableStateOf(false) }
@@ -146,7 +183,7 @@ fun AddMedicationScreen(onBackClicked: () -> Unit, navigateToMedicationConfirm: 
                         }
                     )
                 },
-                label = { Text(text = TimesOfDay.Morning.name)  },
+                label = { Text(text = DailyTimes.Morning.name)  },
                 selectedIcon = { Icon(imageVector = Icons.Default.Done, contentDescription = "Selected") }
             )
             FilterChip(
@@ -171,7 +208,7 @@ fun AddMedicationScreen(onBackClicked: () -> Unit, navigateToMedicationConfirm: 
                         }
                     )
                 },
-                label = { Text(text = TimesOfDay.Afternoon.name)  },
+                label = { Text(text = DailyTimes.Afternoon.name)  },
                 selectedIcon = { Icon(imageVector = Icons.Default.Done, contentDescription = "Selected") }
             )
         }
@@ -200,7 +237,7 @@ fun AddMedicationScreen(onBackClicked: () -> Unit, navigateToMedicationConfirm: 
                         }
                     )
                 },
-                label = { Text(text = TimesOfDay.Evening.name)  },
+                label = { Text(text = DailyTimes.Evening.name)  },
                 selectedIcon = { Icon(imageVector = Icons.Default.Done, contentDescription = "Selected") }
             )
             FilterChip(
@@ -225,7 +262,7 @@ fun AddMedicationScreen(onBackClicked: () -> Unit, navigateToMedicationConfirm: 
                         }
                     )
                 },
-                label = { Text(text = TimesOfDay.Night.name)  },
+                label = { Text(text = DailyTimes.Night.name)  },
                 selectedIcon = { Icon(imageVector = Icons.Default.Done, contentDescription = "Selected") }
             )
         }
@@ -296,11 +333,11 @@ private fun validateMedication(
         return
     }
 
-    val timesOfDay = mutableListOf<TimesOfDay>()
-    if (morningSelection) timesOfDay.add(TimesOfDay.Morning)
-    if (afternoonSelection) timesOfDay.add(TimesOfDay.Afternoon)
-    if (eveningSelection) timesOfDay.add(TimesOfDay.Evening)
-    if (nightSelection) timesOfDay.add(TimesOfDay.Night)
+    val timesOfDay = mutableListOf<DailyTimes>()
+    if (morningSelection) timesOfDay.add(DailyTimes.Morning)
+    if (afternoonSelection) timesOfDay.add(DailyTimes.Afternoon)
+    if (eveningSelection) timesOfDay.add(DailyTimes.Evening)
+    if (nightSelection) timesOfDay.add(DailyTimes.Night)
 
     val newMedication =
         Medication(
