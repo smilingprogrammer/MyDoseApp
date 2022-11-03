@@ -464,7 +464,6 @@ fun EndDateTextField(endDate: (Long) -> Unit) {
     }
 }
 
-
 fun Int.toMonthName(): String {
     return DateFormatSymbols().months[this]
 }
