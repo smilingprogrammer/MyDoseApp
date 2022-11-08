@@ -26,8 +26,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.R
-import com.example.myapplication.db.MedicationDao
-import com.example.myapplication.features.Calendar
 import com.example.myapplication.model.Medication
 import com.example.myapplication.util.DailyTimes
 import com.example.myapplication.util.TimeGroup
@@ -431,9 +429,7 @@ fun EndDateTextField(endDate: (Long) -> Unit) {
     val isPressed: Boolean by interactionSource.collectIsPressedAsState()
 
     val currentDate = Date().toFormattedString()
-    val medicationDao: MedicationDao = MedicationDao()
     var selectedDate by rememberSaveable { mutableStateOf(currentDate) }
-
 
     val context = LocalContext.current
 
